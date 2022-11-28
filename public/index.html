@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget App</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="font-Nunito text-gray-100 bg-lime-900">
+    <div class="px-8 md:px-16 py-10 lg:max-w-6xl lg:mx-auto">
+      <!--content wrapper-->
+      <div class="bg-lime-800 p-2 text-center rounded-md text-teal-50">
+        <h1 class="text-2xl font-bold">BUDGET APP</h1>
+      </div>
+
+      <main class="mt-10">
+
+        <div class="flex flex-col md:flex-row justify-between">
+         <div class="">
+
+            <form
+            id="budget-form"
+            class="w-full md:w-96 flex flex-col p-4 bg-lime-800 shadow-sm  rounded-xl border-2 border-lime-400"
+          >
+          <div id="budget-feedback" class="bg-lime-50 hidden shadow-inner text-pink-600 text-sm font-semibold p-4 rounded-md mb-2">
+            Please enter your budget
+        </div>
+            <label
+              for="title"
+              class="capitalize font-semibold mb-2"
+              >Please enter your budget</label
+            >
+            <input
+              type="text"
+              name=""
+              class="h-10 pl-4 rounded-md border-2 border-gray-600"
+              id="budget-input"
+            />
+
+            <div>
+              <button
+              id="calcBudgetBtn"
+                class="border border-lime-500 transform hover:scale-105 shadow-sm rounded-xl px-4 py-2 text-sm uppercase font-semibold mt-4 bg-lime-500 text-white hover:bg-white hover:text-lime-500 transition ease-out duration-500 hover:border-lime-500"
+              >
+                Calculate
+              </button>
+            </div>
+          </form>
+         </div>
+
+          <div
+            class="mt-10 sm:mt-0 w-full md:w-1/2 flex justify-between items-center p-4 border bg-lime-800 rounded-md shadow-inner "
+          >
+            <div class="flex flex-col items-center justify-center">
+              <h2 class="text-base md:text-xl font-semibold ">BUDGET</h2>
+
+              <span class="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-10 h-10 text-lime-500 my-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
+                  />
+                </svg>
+              </span>
+              <div class="text-lime-500">
+                <h3  class="text-xl md:text-2xl font-bold flex">
+                  <span>$</span>
+                  <p id="budget-amount" class="pl-1"></p>
+                </h3>
+
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+              <h2 class="text-base md:text-xl font-semibold ">EXPENSES</h2>
+              <span class="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-10 h-10 text-red-500 my-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+                  />
+                </svg>
+              </span>
+
+              <div class="text-red-500">
+                <h3  class="text-xl md:text-2xl font-bold flex">
+                  <span>$</span>
+                  <p id="expense-amount" class="pl-1"></p>
+                </h3>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+              <h2 class="text-base md:text-xl font-semibold ">BALANCE</h2>
+
+              <span class="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10 text-amber-500 my-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </span>
+
+
+              <div id="balance"  class="text-amber-500">
+              <h3  class="text-xl md:text-2xl font-bold flex">
+                <span>$</span>
+                <p id="balance-amount" class="pl-1"></p>
+              </h3>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div
+          class="flex flex-col md:flex-row justify-between items-start mt-6 lg:mt-24"
+        >
+
+        <div class="w-full lg:w-1/2">
+
+              <form
+              id="expense-form"
+                class="w-full md:w-96 flex flex-col p-4 bg-lime-800 shadow-inner  rounded-xl border border-lime-400"
+              >
+              <div id="expense-feedback" class="bg-lime-50 hidden shadow-inner text-pink-600 text-sm font-semibold p-4 rounded-md mb-2">
+            </div>
+                <label
+                  for="title"
+                  class="capitalize font-semibold mb-2"
+                  >Please enter your Expenses</label
+                >
+                <input
+                  type="text"
+                  name=""
+                  class="h-10 pl-4 rounded-md border-2 text-lime-900 border-red-200 mb-2"
+                  id="expense-input"
+                />
+
+                <label
+                  for="title"
+                  class="capitalize font-semibold mb-2"
+                  >Please enter your Amount</label
+                >
+                <input
+                  type="text"
+                  name=""
+                  class="h-10 pl-4 rounded-md text-lime-900 border-2 border-red-200"
+                  id="expense-amount-input"
+                />
+
+                <div>
+                  <button
+                  id="expenseBtn"
+                    class="border-2 border-amber-500 rounded-xl px-4 py-2 text-sm uppercase font-semibold mt-4 bg-amber-500 text-white hover:bg-white hover:text-amber-500 transform hover:scale-105 transition ease-out duration-300 hover:border-amber-500"
+                  >
+                    add expenses
+                  </button>
+                </div>
+              </form>
+        </div>
+
+
+          <div class="mt-10 md:mt-0 sm:mt-0 w-full lg:w-1/2 lg:px-4">
+
+            <div class="w-60 md:w-80 px-2 flex items-center justify-between">
+              <h2 class="text-base lg:text-xl font-semibold text-lime-100">
+                Expense Title
+              </h2>
+              <h2 class="text-base lg:text-xl font-semibold text-lime-100">
+                Expense Value
+              </h2>
+            </div>
+
+            <!-- Single expense goes here -->
+            <div id="expense-list" class="w-full h-60 overflow-y-scroll">
+
+            </div>
+            </div>
+        </div>
+      </main>
+    </div>
+
+
+    <!-- <script src="./main.js"></script> -->
+    <script src="./app.js"></script>
+  </body>
+</html>
